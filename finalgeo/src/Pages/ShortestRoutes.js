@@ -37,12 +37,18 @@ const GeoTag = () => {
 		iconSize: [30, 30],
 	});
 
+	var stationIcon = L.icon({
+		iconUrl:
+			"https://w7.pngwing.com/pngs/262/797/png-transparent-firefighter-fire-department-logo-firefighter-firefighter-people-logo-thumbnail.png",
+		iconSize: [30, 30],
+	});
+
 	function LocationMarker() {
 		const map = useMapEvents({
 			click(e) {
 				// console.log(e.latlng);
 
-				if (state.markers.length < 2) {
+				if (state.markers.length < 1) {
 					setState((prevState) => ({
 						...prevState,
 						markers: [...prevState.markers, [e.latlng.lat, e.latlng.lng]],
@@ -72,21 +78,124 @@ const GeoTag = () => {
 	};
 
 	const getRoute = (map) => {
-		var marker = L.marker(state.markers[0], { icon: carIcon }).addTo(map);
-		L.Routing.control({
-			waypoints: [L.latLng(state.markers[0]), L.latLng(state.markers[1])],
-		})
-			.on("routesfound", function (e) {
-				var routes = e.routes;
-				console.log(routes);
+		// var marker = L.marker(state.markers[0], { icon: carIcon }).addTo(map);
+		// L.Routing.control({
+		// 	waypoints: [L.latLng(state.markers[0]), L.latLng(state.markers[1])],
+		// })
+		// 	.on("routesfound", function (e) {
+		// 		var routes = e.routes;
+		// 		console.log(routes);
 
-				e.routes[0].coordinates.forEach(function (coord, index) {
-					setTimeout(function () {
-						marker.setLatLng([coord.lat, coord.lng]);
-					}, 100 * index);
-				});
-			})
-			.addTo(map);
+		// 		e.routes[0].coordinates.forEach(function (coord, index) {
+		// 			setTimeout(function () {
+		// 				marker.setLatLng([coord.lat, coord.lng]);
+		// 			}, 100 * index);
+		// 		});
+		// 	})
+		// 	.addTo(map);
+
+		var routeControl = L.Routing.control({
+			      show: true,
+			      fitSelectedRoutes: true,
+			      plan: false,
+				  routeWhileDragging: false,
+			      lineOptions: {
+			        styles: [
+			          {
+			            color: "blue",
+			            opacity: "0.7",
+			            weight: 6
+			          }
+			        ]
+			      }
+			    })
+			      .addTo(map)
+			      .getPlan();
+
+				  var routeControl1 = L.Routing.control({
+					show: true,
+					fitSelectedRoutes: true,
+					plan: false,
+					routeWhileDragging: false,
+					lineOptions: {
+					  styles: [
+						{
+						  color: "black",
+						  opacity: "0.7",
+						  weight: 6
+						}
+					  ]
+					}
+				  })
+					.addTo(map)
+					.getPlan();
+
+				  var routeControl2 = L.Routing.control({
+					show: true,
+					fitSelectedRoutes: true,
+					plan: false,
+					routeWhileDragging: false,
+					lineOptions: {
+					  styles: [
+						{
+						  color: "red",
+						  opacity: "0.7",
+						  weight: 6
+						}
+					  ]
+					}
+				  })
+					.addTo(map)
+					.getPlan();
+
+					var routeControl3 = L.Routing.control({
+						show: true,
+						fitSelectedRoutes: true,
+						plan: false,
+						routeWhileDragging: false,
+						lineOptions: {
+						  styles: [
+							{
+							  color: "green",
+							  opacity: "0.7",
+							  weight: 6
+							}
+						  ]
+						}
+					  })
+						.addTo(map)
+						.getPlan();
+
+						var routeControl4 = L.Routing.control({
+							show: true,
+							fitSelectedRoutes: true,
+							plan: false,
+							routeWhileDragging: false,
+							lineOptions: {
+							  styles: [
+								{
+								  color: "yellow",
+								  opacity: "0.7",
+								  weight: 6
+								}
+							  ]
+							}
+						  })
+							.addTo(map)
+							.getPlan();
+			
+			    var newLatLngA = new L.LatLng(18.54330786707698, 73.80185578659687, "taskA");
+			    var newLatLngB = new L.LatLng(18.479172608502033, 73.81593201735639, "taskB");
+			    var newLatLngC = new L.LatLng(18.484708070798916, 73.89214966759414, "taskc");
+				var newLatLngD = new L.LatLng(18.554699939687627, 73.87979004958295, "taskd");
+				var newLatLngE = new L.LatLng(18.669854081969387, 73.81936508045689, "taskce");
+
+			
+			    routeControl.setWaypoints([L.latLng(state.markers[0]),newLatLngA]);
+				routeControl1.setWaypoints([L.latLng(state.markers[0]),newLatLngB]);
+				routeControl2.setWaypoints([L.latLng(state.markers[0]),newLatLngC]);
+				routeControl3.setWaypoints([L.latLng(state.markers[0]),newLatLngD]);
+				routeControl4.setWaypoints([L.latLng(state.markers[0]),newLatLngE]);
 	};
 
 	const setFlag = (val) => {
@@ -162,7 +271,7 @@ const GeoTag = () => {
 							Reset
 						</button>
 
-						{state.markers.length > 1 ? (
+						{state.markers.length > 0 ? (
 							<button
 								className="btn btn-primary ms-2"
 								onClick={() => {
@@ -181,3 +290,113 @@ const GeoTag = () => {
 };
 
 export default GeoTag;
+
+// import L from "leaflet";
+// import "./ShortestRoutes.css";
+// import React, { useEffect, useState } from "react";
+
+
+// require("leaflet-routing-machine");
+
+// const style = {
+//   width: "90%",
+//   height: "500px"
+// };
+
+// var myIcon = L.icon({
+//   iconUrl:
+//     "https://cdn4.iconfinder.com/data/icons/maps-and-navigation-solid-icons-vol-1/72/19-512.png",
+//   iconSize: [25, 25],
+//   iconAnchor: [10, 10]
+// });
+
+// var greenIcon = new L.Icon({
+//   iconUrl:
+//     "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+//   shadowUrl:
+//     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/marker-shadow.png",
+//   iconSize: [25, 41],
+//   iconAnchor: [12, 41],
+//   popupAnchor: [1, -34],
+//   shadowSize: [41, 41]
+// });
+
+// const ShortestRoutes =()=> {
+// 	const [state, setState] = useState({
+// 				map: null,
+// 				marker: null,
+// 				flag: false,
+// 			});
+// 	useEffect(()=>{
+// 			let  map = L.map("map", {
+// 			  center: [65.012357, 25.483549],
+// 			  zoom: 7,
+// 			  layers: [
+// 			    L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+// 			      attribution:
+// 			        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+// 			    })
+// 			  ]
+// 			}
+// 			);
+// 			setState(pstate=>({
+// 				...pstate,
+// 				map:map
+// 			})	
+// 			)
+
+// 	},[])
+//   componentDidMount() {
+    // // create map
+    // this.map = L.map("map", {
+    //   center: [65.012357, 25.483549],
+    //   zoom: 7,
+    //   layers: [
+    //     L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+    //       attribution:
+    //         '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    //     })
+    //   ]
+    // });
+
+    //   L.Routing.control({
+    //     waypoints: [
+    //       L.latLng(65.012357, 25.483549, 65.052492, 25.477031),
+    //       L.latLng(65.01615, 25.471847, 65.05098, 25.474349)
+    //     ],
+    //     routeWhileDragging: true
+    //   })
+    //     .addTo(this.map)
+    //     .getPlan();
+    // }
+
+//     var routeControl = L.Routing.control({
+//       show: true,
+//       fitSelectedRoutes: true,
+//       plan: false,
+// 	  routeWhileDragging: false,
+//       lineOptions: {
+//         styles: [
+//           {
+//             color: "blue",
+//             opacity: "0.7",
+//             weight: 6
+//           }
+//         ]
+//       }
+//     })
+//       .addTo(state.map)
+//       .getPlan();
+
+//     var newLatLngA = new L.LatLng(65.012357, 25.483549, "taskA");
+//     var newLatLngB = new L.LatLng(65.01615, 25.471847, "taskB");
+//     var newLatLngC = new L.LatLng(65.05098, 25.474349, "taskc");
+
+//     routeControl.setWaypoints([newLatLngA, newLatLngB, newLatLngC]);
+  
+
+//     return <div id="map" style={style} />;
+ 
+// }
+
+// export default ShortestRoutes;

@@ -43,6 +43,13 @@ const GeoTag = () => {
 		iconSize: [30, 30],
 	});
 
+	var hospitalIcon = L.icon({
+		iconUrl:
+			"https://flyclipart.com/thumb2/hospital-icon-869887.png",
+		iconSize: [30, 30],
+	});
+
+
 	function LocationMarker() {
 		const map = useMapEvents({
 			click(e) {
@@ -183,19 +190,123 @@ const GeoTag = () => {
 						  })
 							.addTo(map)
 							.getPlan();
+
+							//Hospital route
+
+							var routeControl5 = L.Routing.control({
+								show: true,
+								fitSelectedRoutes: true,
+								plan: false,
+								routeWhileDragging: false,
+								lineOptions: {
+								  styles: [
+									{
+									  color: "purple",
+									  opacity: "0.7",
+									  weight: 6
+									}
+								  ]
+								}
+							  })
+								.addTo(map)
+								.getPlan();
+								var routeControl6 = L.Routing.control({
+									show: true,
+									fitSelectedRoutes: true,
+									plan: false,
+									routeWhileDragging: false,
+									lineOptions: {
+									  styles: [
+										{
+										  color: "pink",
+										  opacity: "0.7",
+										  weight: 6
+										}
+									  ]
+									}
+								  })
+									.addTo(map)
+									.getPlan();
+									var routeControl7 = L.Routing.control({
+										show: true,
+										fitSelectedRoutes: true,
+										plan: false,
+										routeWhileDragging: false,
+										lineOptions: {
+										  styles: [
+											{
+											  color: "orange",
+											  opacity: "0.7",
+											  weight: 6
+											}
+										  ]
+										}
+									  })
+										.addTo(map)
+										.getPlan();
+			
+										var routeControl8 = L.Routing.control({
+											show: true,
+											fitSelectedRoutes: true,
+											plan: false,
+											routeWhileDragging: false,
+											lineOptions: {
+											  styles: [
+												{
+												  color: "brown",
+												  opacity: "0.7",
+												  weight: 6
+												}
+											  ]
+											}
+										  })
+											.addTo(map)
+											.getPlan();
+			
+											var routeControl9 = L.Routing.control({
+												show: true,
+												fitSelectedRoutes: true,
+												plan: false,
+												routeWhileDragging: false,
+												lineOptions: {
+												  styles: [
+													{
+													  color: "grey",
+													  opacity: "0.7",
+													  weight: 6
+													}
+												  ]
+												}
+											  })
+												.addTo(map)
+												.getPlan();
+			
+												
+									
 			
 			    var newLatLngA = new L.LatLng(18.54330786707698, 73.80185578659687, "taskA");
 			    var newLatLngB = new L.LatLng(18.479172608502033, 73.81593201735639, "taskB");
 			    var newLatLngC = new L.LatLng(18.484708070798916, 73.89214966759414, "taskc");
 				var newLatLngD = new L.LatLng(18.554699939687627, 73.87979004958295, "taskd");
-				var newLatLngE = new L.LatLng(18.669854081969387, 73.81936508045689, "taskce");
+				var newLatLngE = new L.LatLng(18.669854081969387, 73.81936508045689, "taske");
+						//   Hospital cordi
 
-			
+				var newLatLngF = new L.LatLng(18.55316673940196, 73.82652104232788, "taskf");
+				var newLatLngG = new L.LatLng(18.521553187276353, 73.85587495000001 , "taskf");
+				var newLatLngH = new L.LatLng(18.501545288262445, 73.89047829767367, "taskf");		  
+				var newLatLngI = new L.LatLng(18.53063119218468, 73.87668846271968, "taskf");
+				var newLatLngJ = new L.LatLng(18.52631597066542, 73.87135960824826, "taskf");
+
 			    routeControl.setWaypoints([L.latLng(state.markers[0]),newLatLngA]);
 				routeControl1.setWaypoints([L.latLng(state.markers[0]),newLatLngB]);
 				routeControl2.setWaypoints([L.latLng(state.markers[0]),newLatLngC]);
 				routeControl3.setWaypoints([L.latLng(state.markers[0]),newLatLngD]);
 				routeControl4.setWaypoints([L.latLng(state.markers[0]),newLatLngE]);
+				routeControl5.setWaypoints([L.latLng(state.markers[0]),newLatLngF]);
+				routeControl6.setWaypoints([L.latLng(state.markers[0]),newLatLngG]);
+				routeControl7.setWaypoints([L.latLng(state.markers[0]),newLatLngH]);
+				routeControl8.setWaypoints([L.latLng(state.markers[0]),newLatLngI]);
+				routeControl9.setWaypoints([L.latLng(state.markers[0]),newLatLngJ]);
 	};
 
 	const setFlag = (val) => {
@@ -223,30 +334,59 @@ const GeoTag = () => {
 			>
 				<Marker position={[18.54330786707698, 73.80185578659687]} icon={stationIcon}>
       								<Popup>
-        								A pretty CSS3 popup. <br /> Easily customizable.
+        								Fire Station 1 <br /> Pashan
       								</Popup>
     						</Marker>
 
 							<Marker position={[18.479172608502033, 73.81593201735639]} icon={stationIcon}>
       								<Popup>
-        								A pretty CSS3 popup. <br /> Easily customizable.
+        								Fire station 2 <br /> Easily customizable.
       								</Popup>
     						</Marker>
 							<Marker position={[18.484708070798916, 73.89214966759414]} icon={stationIcon}>
       								<Popup>
-        								A pretty CSS3 popup. <br /> Easily customizable.
+        								Fire Station 3 <br /> Easily customizable.
       								</Popup>
     						</Marker>
 							<Marker position={[18.554699939687627, 73.87979004958295]} icon={stationIcon}>
       								<Popup>
-        								A pretty CSS3 popup. <br /> Easily customizable.
+        								Fire Station 4 <br /> Easily customizable.
       								</Popup>
     						</Marker>
 							<Marker position={[18.669854081969387, 73.81936508045689]} icon={stationIcon}>
       								<Popup>
-        								A pretty CSS3 popup. <br /> Easily customizable.
+        								Fire Station 5 <br /> Easily customizable.
       								</Popup>
     						</Marker>
+
+							<Marker position={[18.55316673940196, 73.82652104232788]} icon={hospitalIcon}>
+      								<Popup>
+        								Hospital 1 <br /> Sahyadri Speciality Labs
+      								</Popup>
+    						</Marker>
+
+							<Marker position={[18.521553187276353, 73.85587495000001 ]} icon={hospitalIcon}>
+      								<Popup>
+        								Hospital 2 <br /> Surya Sahyadri Hospital
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.501545288262445, 73.89047829767367]} icon={hospitalIcon}>
+      								<Popup>
+        								Hospital 3 <br /> Southern Command Hospital
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.53063119218468, 73.87668846271968]} icon={hospitalIcon}>
+      								<Popup>
+        								Hospital 4 <br /> Jehangir Hospital
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.52631597066542, 73.87135960824826]} icon={hospitalIcon}>
+      								<Popup>
+        								Hospital 5 <br /> Sasoon Hospital
+      								</Popup>
+    						</Marker>
+
+
 				<LayersControl position="topright">
 					<LayersControl.BaseLayer checked name="OSM">
 						<TileLayer

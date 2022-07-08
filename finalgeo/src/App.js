@@ -19,7 +19,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PageNotFound from "./Components/layout/PageNotFound";
 import { AuthContext } from "./Contexts/AuthContext";
 import AlertUI from "./Components/layout/AlertUI";
-
+import MySroute from "./Pages/MySroute"
 function App() {
   const { loadUser, logout } = useContext(AuthContext);
 
@@ -54,7 +54,9 @@ function App() {
           <Route path="/geofence" element={<GeoFence />} />
           <Route path="/geotag" element={<GeoTag />} />
           <Route path="/routes" element={<ShortestRoutes />} />
+          <Route path="/shortestroute" element={<MySroute />} />
           <Route path="*" element={<PageNotFound />} />
+
         </Routes>
       </Router>
     </div>

@@ -43,6 +43,9 @@ const MyNavbar = () => {
             <NavDropdown.Item href="/routes" className="fs-5">
               Routes
             </NavDropdown.Item>
+            <NavDropdown.Item href="/routes" className="fs-5">
+              Shortest Route
+            </NavDropdown.Item>
           </NavDropdown>
           <Nav.Link href="/login" className="nav-item ms-5 fs-5">
             Login

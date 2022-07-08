@@ -72,6 +72,11 @@ const Navbar = () => {
 														Routes
 													</a>
 												</li>
+												<li>
+													<a class="dropdown-item" href="/shortestroute">
+														Shortest Routes
+													</a>
+												</li>
 											</ul>
 										</li>
 									</ul>

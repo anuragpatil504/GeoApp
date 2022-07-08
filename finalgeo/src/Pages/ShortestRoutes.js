@@ -221,12 +221,40 @@ const GeoTag = () => {
 					}));
 				}}
 			>
+				<Marker position={[18.54330786707698, 73.80185578659687]} icon={stationIcon}>
+      								<Popup>
+        								A pretty CSS3 popup. <br /> Easily customizable.
+      								</Popup>
+    						</Marker>
+
+							<Marker position={[18.479172608502033, 73.81593201735639]} icon={stationIcon}>
+      								<Popup>
+        								A pretty CSS3 popup. <br /> Easily customizable.
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.484708070798916, 73.89214966759414]} icon={stationIcon}>
+      								<Popup>
+        								A pretty CSS3 popup. <br /> Easily customizable.
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.554699939687627, 73.87979004958295]} icon={stationIcon}>
+      								<Popup>
+        								A pretty CSS3 popup. <br /> Easily customizable.
+      								</Popup>
+    						</Marker>
+							<Marker position={[18.669854081969387, 73.81936508045689]} icon={stationIcon}>
+      								<Popup>
+        								A pretty CSS3 popup. <br /> Easily customizable.
+      								</Popup>
+    						</Marker>
 				<LayersControl position="topright">
 					<LayersControl.BaseLayer checked name="OSM">
 						<TileLayer
 							attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 							url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-						/>
+						>
+							 
+						</TileLayer>
 					</LayersControl.BaseLayer>
 					<LayersControl.BaseLayer name="MapTiler Street Map">
 						<TileLayer
